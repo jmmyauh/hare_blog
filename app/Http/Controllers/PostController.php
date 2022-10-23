@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 // use Illuminate\Http\Request;
-use App\Http\Requests\PostStoreRequest;
-use App\Http\Requests\PostUpdateRequest;
+use App\Http\Requests\storepostrequest;
+use App\Http\Requests\updatepostrequest;
 use App\Models\Post;
 
 use Illuminate\Support\Facades\DB;
@@ -42,10 +42,10 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\PostStoreRequest  $request
+     * @param  \App\Http\Requests\storepostrequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostStoreRequest $request)
+    public function store(storepostrequest $request)
     {
         $post = new Post($request->all());
         $post->user_id = $request->user()->id;
@@ -108,11 +108,11 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\PostUpdateRequest  $request
+     * @param  \App\Http\Requests\updatepostrequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostUpdateRequest $request, $id)
+    public function update(updatepostrequest $request, $id)
     {
         $post = Post::find($id);
 

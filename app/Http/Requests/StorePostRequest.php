@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostUpdateRequest extends FormRequest
+class storepostrequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,15 +23,10 @@ class PostUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $rule = [
+        return [
             'title' => 'required|string|max:50',
             'body' => 'required|string|max:2000',
+            'image' => 'required|file|image|mimes:jpg,png',
         ];
-
-        if ($this->file('image')) {
-            $rule['image'] = 'required|file|image|mimes:jpg,png';
-        }
-
-        return $rule;
     }
 }
